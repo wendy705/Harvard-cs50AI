@@ -1,3 +1,6 @@
+import math
+import os
+import string
 import nltk
 import sys
 
@@ -144,11 +147,11 @@ def top_sentences(query, sentences, idfs, n):
         for word in words_in_query:
             idf += idfs[word]
 
-        # calculate query term density of sentence
+        # calculate the query term density of sentence
         num_words_in_query = sum(map(lambda x: x in words_in_query, words))
         query_term_density = num_words_in_query / len(words)
 
-        # update sentence scores with idf and query term density values
+        # update sentence scores with respective idf and query term density values
         score[sentence] = {'idf': idf, 'qtd': query_term_density}
 
     # rank sentences by idf then query term density
